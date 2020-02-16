@@ -16,7 +16,9 @@ function generateInitials(firstName, lastName) {
 function addVAT(originalPrice, vatRate) {
   if (originalPrice === undefined) throw new Error("originalPrice is requied");
   if (vatRate === undefined) throw new Error("vatRate is required");
-  // Add your code here!
+  let vatCost = originalPrice * vatRate / 100
+  let answer = originalPrice + vatCost
+  return Math.floor(answer * 100) / 100;
 }
 
 function getSalePrice(originalPrice, reduction) {
