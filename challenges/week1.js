@@ -48,7 +48,11 @@ return str.substring(position, position + length)
 
 function reverseWord(word) {
   if (word === undefined) throw new Error("word is required");
-  // Add your code here!
+    var newString = "";
+    for (var i = word.length - 1; i >= 0; i--) {
+        newString += word[i];
+    }
+    return newString;
 }
 
 function reverseAllWords(words) {
