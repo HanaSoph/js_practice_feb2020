@@ -86,23 +86,47 @@ return that total amount
 
 function getMeanScore(scores) {
   if (scores === undefined) throw new Error("scores is required");
-  // Add your code here!
+  let sum = 0;
+  for (let i in scores) {
+    sum += scores[i];
+  }
+  let numCount = scores.length; {
+    let answer = sum / numCount
+    return Math.round(answer * 100) / 100;
+  }
 }
+
+//add all the numbers together (24)
+//count the amount of scores (3)
+//then divide by the number of of scores by the total (8)
 
 function simpleFizzBuzz(n) {
   if (n === undefined) throw new Error("n is required");
-  // Add your code here!
-}
 
-module.exports = {
-  capitalize,
-  generateInitials,
-  addVAT,
-  getSalePrice,
-  getMiddleCharacter,
-  reverseWord,
-  reverseAllWords,
-  countLinuxUsers,
-  getMeanScore,
-  simpleFizzBuzz
-};
+  if ((n % 3 === 0) && (n % 5 === 0)) {
+    return "fizzbuzz";
+  } else
+    if (n % 3 === 0) {
+      return "fizz"
+    } else {
+      if (n % 5 === 0)
+        return "buzz"
+      else {
+        return n
+      }
+    }
+  }
+
+
+  module.exports = {
+    capitalize,
+    generateInitials,
+    addVAT,
+    getSalePrice,
+    getMiddleCharacter,
+    reverseWord,
+    reverseAllWords,
+    countLinuxUsers,
+    getMeanScore,
+    simpleFizzBuzz
+  };
