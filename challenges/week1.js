@@ -32,7 +32,7 @@ function getSalePrice(originalPrice, reduction) {
 
 function getMiddleCharacter(str) {
   if (str === undefined) throw new Error("str is required");
-  
+
   let position;
   let length;
 
@@ -43,27 +43,46 @@ function getMiddleCharacter(str) {
     position = str.length / 2 - 1;
     length = 2;
   }
-return str.substring(position, position + length)
+  return str.substring(position, position + length)
 }
 
 function reverseWord(word) {
   if (word === undefined) throw new Error("word is required");
-    var newString = "";
-    for (var i = word.length - 1; i >= 0; i--) {
-        newString += word[i];
-    }
-    return newString;
+  var newString = "";
+  for (var i = word.length - 1; i >= 0; i--) {
+    newString += word[i];
+  }
+  return newString;
 }
 
 function reverseAllWords(words) {
   if (words === undefined) throw new Error("words is required");
-  // Add your code here!
+  var newArray = [];
+  // for (var i = words.length - 1; i >= 0; i--) {
+  //   newArray.push(reverseWord(words[i]));
+  // }
+  words.forEach(word => {
+    newArray.push(reverseWord(word));
+  })
+  return newArray;
 }
 
 function countLinuxUsers(users) {
   if (users === undefined) throw new Error("users is required");
-  // Add your code here!
+  let counter = 0
+  users.forEach(user => {
+    if (user.type == "Linux") {
+      counter++
+    }
+  })
+  return counter
 }
+
+/*
+loop through the array of objects
+count the object specified (type: linux)
+return that total amount
+*/
 
 function getMeanScore(scores) {
   if (scores === undefined) throw new Error("scores is required");
