@@ -25,7 +25,7 @@ describe("getSquares", () => {
   });
 });
 
-describe.only("camelCaseWords", () => {
+describe("camelCaseWords", () => {
   test("camel cases a single word (i.e. no capital letter at beginning)", () => {
     expect(camelCaseWords(["my"])).toBe("my");
   });
@@ -45,7 +45,7 @@ describe.only("camelCaseWords", () => {
 });
 
 
-describe("getTotalSubjects", () => {
+describe.only("getTotalSubjects", () => {
   test("returns 0 if no people have subjects", () => {
     const people = [
       { name: "Billy", subjects: [] },
