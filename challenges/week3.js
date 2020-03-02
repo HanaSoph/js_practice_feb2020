@@ -45,14 +45,43 @@ function getTotalSubjects(people) {
 function checkIngredients(menu, ingredient) {
   if (menu === undefined) throw new Error("menu is required");
   if (!ingredient) throw new Error("ingredient is required");
-  // Your code here!
+  for (let i = 0; i < menu.length; i++) {
+    if (menu[i].ingredients.includes(ingredient)) {
+      return true
+    }
+  }
+  return false
 }
+
+//loop through the array
+//access the ingredients values
+//if the specified word is found return true
+//other wise fo through the entire array and return false
 
 function duplicateNumbers(arr1, arr2) {
   if (arr1 === undefined) throw new Error("arr1 is required");
   if (arr2 === undefined) throw new Error("arr2 is required");
-  // Your code here!
+  
+  let commonNums = []
+  for (var i = 0; i < arr1.length; i++){ 
+    for (var j = 0; j < arr2.length; j++){
+      if (arr1[i] === arr2[j]) {
+        if (!commonNums.includes(arr1[i])) {
+        commonNums.push(arr1[i])
+        }
+      }
+    } 
+  }
+  return commonNums.sort()
 }
+
+//start with the first number in the first array
+//compare this with the numbers in the second array (with a loop)
+  //if the numbers match -> return all the matching numbers in a new array
+  //if the number don't match -> move on to the next number
+//once the first number is compared, move onto the second number and repeat until the end of both arrays
+//sort the new array in ascending order
+//plus make sure the values are unique 
 
 module.exports = {
   getSquares,
