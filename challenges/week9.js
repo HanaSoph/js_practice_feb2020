@@ -5,7 +5,16 @@
  * @returns {Number}
  */
 const sumMultiples = arr => {
-  if (arr === undefined) throw new Error("arr is required");
+  if (!arr) throw new Error("arr is required");
+  if (!Array.isArray(arr)) throw new Error("an array is required");
+
+  let total = 0;
+  arr.forEach(n => {
+    if (n % 5 === 0 || n % 3 === 0) {
+      total += n;
+    }
+  })
+  return total;
 };
 
 /**
@@ -15,7 +24,20 @@ const sumMultiples = arr => {
  */
 const isValidDNA = str => {
   if (str === undefined) throw new Error("str is required");
+  if (str === "") return false
+
+  let DNA = ["C", "G", "T", "A"];
+
+  let x = str.toUpperCase().split('');
+
+  for (let i = 0; i < x.length; i++) {
+    if (!DNA.includes(x[i])) {
+      return false
+    }
+  }
+  return true
 };
+
 
 /**
  * This function will receive a valid DNA string (see above) and should return a string of the complementary base pairs. In DNA, T always pairs with A, and C always pairs with G. So a string of "ACTG" would have a complementary DNA string of "TGAC".
@@ -46,6 +68,9 @@ const isItPrime = n => {
  * @param {Any} fill
  * @returns {Array}
  */
+
+// creates a complex type - watch video from 37:50
+
 const createMatrix = (n, fill) => {
   if (n === undefined) throw new Error("n is required");
   if (fill === undefined) throw new Error("fill is required");
@@ -66,6 +91,19 @@ const createMatrix = (n, fill) => {
 const areWeCovered = (staff, day) => {
   if (staff === undefined) throw new Error("staff is required");
   if (day === undefined) throw new Error("day is required");
+  let count = 0;
+  for (let i = 0; i < staff.length; i++) {
+    for (let x = 0; x < staff[i].rota.length; x++) {
+      if (staff[i].rota[x] === day) {
+        count++
+      }
+    }
+  }
+  if (count >= 3) {
+    return true
+  } else {
+    return false
+  }
 };
 
 module.exports = {
