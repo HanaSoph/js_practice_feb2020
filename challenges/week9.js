@@ -44,8 +44,40 @@ const isValidDNA = str => {
  * @param {String} str
  * @returns {String}
  */
+
 const getComplementaryDNA = str => {
   if (str === undefined) throw new Error("str is required");
+  if (!isValidDNA(str)) throw new Error("DNA character required");
+
+  let responseStr = ''
+
+  let strAsArray = str.toUpperCase().split('');
+
+  strAsArray.forEach((element) => {
+    if (element === "A") {
+      responseStr += "T"
+    } else if (element === "T") {
+      responseStr += "A"
+    } else if (element === "C") {
+      responseStr += "G"
+    } else if (element === "G") {
+      responseStr += "C"
+    }
+  })
+
+  // for (let i = 0; i < x.length; i++) {
+  //   if (x[i] === "A") {
+  //     responseStr += "T"
+  //   } else if (x[i] === "T") {
+  //     responseStr += "A"
+  //   } else if (x[i] === "C") {
+  //     responseStr += "G"
+  //   } else if (x[i] === "G") {
+  //     responseStr += "C"
+  //   }
+  // }
+
+  return responseStr;
 };
 
 /**
@@ -55,6 +87,21 @@ const getComplementaryDNA = str => {
  */
 const isItPrime = n => {
   if (n === undefined) throw new Error("n is required");
+  if (isNaN(n)) throw new Error("please enter a number");
+
+  if (n === 1) {
+    return false;
+  }
+  else if (n === 2) {
+    return true;
+  } else {
+    for (let x = 2; x < n; x++) {
+      if (n % x === 0) {
+        return false;
+      }
+    }
+    return true;
+  }
 };
 
 /**
@@ -69,11 +116,23 @@ const isItPrime = n => {
  * @returns {Array}
  */
 
-// creates a complex type - watch video from 37:50
 
 const createMatrix = (n, fill) => {
   if (n === undefined) throw new Error("n is required");
   if (fill === undefined) throw new Error("fill is required");
+
+  let bigArr = []
+  let arr = []
+
+  for (let x = 0; x < n; x++) {
+    arr.push(fill)
+  }
+
+  for (let y = 0; y < n; y++) {
+    bigArr.push(arr)
+  }
+
+  return bigArr;
 };
 
 /**
