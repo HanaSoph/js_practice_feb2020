@@ -4,6 +4,14 @@
  */
 const sumDigits = n => {
   if (n === undefined) throw new Error("n is required");
+  let count = 0
+
+  let indiNumber = n.toString().split('').map((a) => { return parseInt(a) });
+
+  for (let i = 0; i < indiNumber.length; i++) {
+    count += indiNumber[i]
+  }
+  return (count);
 };
 
 /**
@@ -17,6 +25,17 @@ const sumDigits = n => {
 const createRange = (start, end, step) => {
   if (start === undefined) throw new Error("start is required");
   if (end === undefined) throw new Error("end is required");
+  if (step === undefined) { step = 1 }
+
+  let finalRange = []
+
+  let sum = start
+  finalRange.push(sum);
+  while (sum < end) {
+    sum += step
+    finalRange.push(sum)
+  }
+  return finalRange;
 };
 
 /**
@@ -51,6 +70,21 @@ const createRange = (start, end, step) => {
 const getScreentimeAlertList = (users, date) => {
   if (users === undefined) throw new Error("users is required");
   if (date === undefined) throw new Error("date is required");
+
+  const longScreentimeUsers = [];
+  
+  users.forEach(user => {
+    user.screenTime.forEach(userScreenTime => {
+      if (date === userScreenTime.date) {
+        const usageValues = Object.values(userScreenTime.usage);
+        const dayTotal = usageValues.reduce((a, b) => a + b, 0);
+        if (dayTotal >= 100) {
+          longScreentimeUsers.push(user.username);
+        }
+      }
+    })
+  });
+  return longScreentimeUsers
 };
 
 /**

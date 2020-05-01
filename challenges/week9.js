@@ -38,13 +38,11 @@ const isValidDNA = str => {
   return true
 };
 
-
 /**
  * This function will receive a valid DNA string (see above) and should return a string of the complementary base pairs. In DNA, T always pairs with A, and C always pairs with G. So a string of "ACTG" would have a complementary DNA string of "TGAC".
  * @param {String} str
  * @returns {String}
  */
-
 const getComplementaryDNA = str => {
   if (str === undefined) throw new Error("str is required");
   if (!isValidDNA(str)) throw new Error("DNA character required");
@@ -64,19 +62,6 @@ const getComplementaryDNA = str => {
       responseStr += "C"
     }
   })
-
-  // for (let i = 0; i < x.length; i++) {
-  //   if (x[i] === "A") {
-  //     responseStr += "T"
-  //   } else if (x[i] === "T") {
-  //     responseStr += "A"
-  //   } else if (x[i] === "C") {
-  //     responseStr += "G"
-  //   } else if (x[i] === "G") {
-  //     responseStr += "C"
-  //   }
-  // }
-
   return responseStr;
 };
 
@@ -115,8 +100,6 @@ const isItPrime = n => {
  * @param {Any} fill
  * @returns {Array}
  */
-
-
 const createMatrix = (n, fill) => {
   if (n === undefined) throw new Error("n is required");
   if (fill === undefined) throw new Error("fill is required");

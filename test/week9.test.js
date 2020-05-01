@@ -65,7 +65,7 @@ describe("isValidDNA", () => {
     // ignores capitalisation
 })
 
-describe("getComplementaryDNA", () => {
+describe.only("getComplementaryDNA", () => {
     test("throws error if string is not a DNA character", () => {
         expect(() => {
             getComplementaryDNA("H");
@@ -103,7 +103,7 @@ describe("isItPrime", () => {
     })
 });
 
-describe.only("createMatrix", () => {
+describe("createMatrix", () => {
     test("throws an error if the n is undefined", () => {
         expect(() => {
             createMatrix(undefined, "");
@@ -125,8 +125,6 @@ describe.only("createMatrix", () => {
         expect(result).toEqual(expected);
     });
 });
-
-// simpler test - returns an empty array with arguement 0
 
 describe("areWeCovered", () => {
     test("returns false if there are no staff at all", () => {
