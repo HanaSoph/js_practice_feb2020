@@ -62,4 +62,44 @@ describe("getScreentimeAlertList", () => {
     test("return an array of usernames of users who have used more than 100 minutes of screentime for a given date", () => {
         expect(getScreentimeAlertList(users, '2019-05-04')).toEqual(["beth_1234"]);
     });
-})
+});
+
+describe("hexToRGB", () => {
+    test("expects a HEX number and returns the RGB code", () => {
+        expect(hexToRGB("#FF1133")).toBe("rgb(255,17,51)");
+        expect(hexToRGB("#591757")).toBe("rgb(89,23,87)");
+    });
+
+    test("returns rgb even if the hex is uncapitalised", () =>{
+        expect(hexToRGB("#e39820")).toBe("rgb(227,152,32)");
+    });
+
+    test("throws undefined if no hex is given", () => {
+        expect(() => {
+            hexToRGB();
+        }).toThrow("hexStr is required");
+    });
+});
+
+ describe.only("findWinner", () => {
+    test("returns X when X has three in a row", () => {
+        expect(findWinner([["X", "X", "X"], ["0", null, "0"], ["0", null, null]])).toBe("X");
+        expect(findWinner([["X", null, "X"], ["0", null, null], ["X", "X", "X"]])).toBe("X");
+        expect(findWinner([[null, "X", null], [null, "X", null], ["X", "X", "0"]])).toBe("X");
+    });
+    test("returns 0 when 0 has three in a row", () => {
+        expect(findWinner([["X", null, "X"], ["0", "0", "0"], ["0", null, null]])).toBe("0");
+        expect(findWinner([["X", null, "X"], ["0", null, null], ["0", "0", "0"]])).toBe("0");
+        expect(findWinner([["0", "X", "0"], [null, null, "0"], ["X", "X", "0"]])).toBe("0");
+    });
+    test("returns X when X has 3 diagonally in a row", () => {
+        expect(findWinner([["0", "0", "X"], [null, "X", "0"], ["X", null, "0"]])).toBe("X");
+    });
+    test("returns 0 when 0 has 3 diagonally in a row", () => {
+        expect(findWinner([["X", "X", "0"], [null, "0", "X"], ["0", null, "0"]])).toBe("0");
+    });
+    test("returns null when there is no winner", () => {
+        expect(findWinner([["0", "0", "X"], ["X", "X", "0"], ["0", "X", "0"]])).toBe(null);
+    });
+
+});

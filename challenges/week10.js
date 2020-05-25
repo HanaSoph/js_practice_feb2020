@@ -72,7 +72,7 @@ const getScreentimeAlertList = (users, date) => {
   if (date === undefined) throw new Error("date is required");
 
   const longScreentimeUsers = [];
-  
+
   users.forEach(user => {
     user.screenTime.forEach(userScreenTime => {
       if (date === userScreenTime.date) {
@@ -99,7 +99,16 @@ const getScreentimeAlertList = (users, date) => {
  */
 const hexToRGB = hexStr => {
   if (hexStr === undefined) throw new Error("hexStr is required");
+
+  let r = 0, g = 0, b = 0;
+
+    r = "0x" + hexStr[1] + hexStr[2];
+    g = "0x" + hexStr[3] + hexStr[4];
+    b = "0x" + hexStr[5] + hexStr[6];
+
+  return("rgb(" + +r + "," + +g + "," + +b + ")");
 };
+
 
 /**
  * This function takes a noughts and crosses board represented as an array, where an empty space is represented with null.
@@ -113,6 +122,22 @@ const hexToRGB = hexStr => {
  */
 const findWinner = board => {
   if (board === undefined) throw new Error("board is required");
+  
+  let winner = "";
+
+    if(board[0][0] && board[0][1] && board[0][2] === "X" || board[1][0] && board[1][1] && board[1][2] === "X" || board[2][0] && board[2][1] && board[2][2] === "X" ) {
+       winner = "X" //checks lines across for X
+     } else if(board[0][0] && board [1][0] && board[2][0] === "X" || board[0][1] && board[1][1] && board[2][1] === "X" || board[0][2] && board[1][2] && board[2][2] === "X") {
+       winner = "X" //checks lines down for X
+     } else if(board[0][0] && board[0][1] && board[0][2] === "0" || board[1][0] && board[1][1] && board[1][2] === "0" || board[2][0] && board[2][1] && board[2][2] === "0" ) {
+       winner = "0" //checks lines across for 0
+     } else if(board[0][0] && board [1][0] && board[2][0] === "0" || board[0][1] && board[1][1] && board[2][1] === "0" || board[0][2] && board[1][2] && board[2][2] === "0") {
+       winner = "0" //checks lines down for 0
+     } else {
+       winner = null
+     }
+  return(winner);
+
 };
 
 module.exports = {
