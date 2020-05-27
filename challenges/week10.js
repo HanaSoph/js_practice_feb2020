@@ -125,17 +125,21 @@ const findWinner = board => {
   
   let winner = "";
 
-    if(board[0][0] && board[0][1] && board[0][2] === "X" || board[1][0] && board[1][1] && board[1][2] === "X" || board[2][0] && board[2][1] && board[2][2] === "X" ) {
+    if(board[0][0] === 'X' && board[0][1] === 'X' && board[0][2] === "X" || board[1][0] === 'X' && board[1][1] === 'X' && board[1][2] === "X" || board[2][0] === 'X' && board[2][1] === 'X' && board[2][2] === "X" ) {
        winner = "X" //checks lines across for X
-     } else if(board[0][0] && board [1][0] && board[2][0] === "X" || board[0][1] && board[1][1] && board[2][1] === "X" || board[0][2] && board[1][2] && board[2][2] === "X") {
+      } else if(board[0][0] === 'X' && board[1][0] === 'X' && board[2][0] === "X" || board[0][1] === 'X' && board[1][1] === 'X' && board[2][1] === "X" || board[0][2] === 'X' && board[1][2] === 'X' && board[2][2] === "X") {
        winner = "X" //checks lines down for X
-     } else if(board[0][0] && board[0][1] && board[0][2] === "0" || board[1][0] && board[1][1] && board[1][2] === "0" || board[2][0] && board[2][1] && board[2][2] === "0" ) {
+      } else if(board[0][0] === 'X' && board[1][1] === 'X' && board[2][2] === "X" || board[2][0] === 'X' && board[1][1] === 'X' && board[0][2] === "X") {
+      winner = "X" //checks lines diagonally for X
+      } else if(board[0][0]  === "0" && board[0][1] === "0" && board[0][2] === "0" || board[1][0] === "0" && board[1][1] === "0" && board[1][2] === "0" || board[2][0] === "0" && board[2][1] === "0" && board[2][2] === "0" ) {
        winner = "0" //checks lines across for 0
-     } else if(board[0][0] && board [1][0] && board[2][0] === "0" || board[0][1] && board[1][1] && board[2][1] === "0" || board[0][2] && board[1][2] && board[2][2] === "0") {
+      } else if(board[0][0] === "0" && board [1][0] === "0" && board[2][0] === "0" || board[0][1] === "0" && board[1][1] === "0" && board[2][1] === "0" || board[0][2] === "0" && board[1][2] === "0" && board[2][2] === "0") {
        winner = "0" //checks lines down for 0
-     } else {
+      } else if(board[0][0] === '0' && board[1][1] === '0' && board[2][2] === "0" || board[2][0] === '0' && board[1][1] === '0' && board[0][2] === "0") {
+        winner = "0" //checks lines diagonally for 0 
+      } else {
        winner = null
-     }
+      }
   return(winner);
 
 };
